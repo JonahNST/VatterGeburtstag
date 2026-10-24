@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Papas Kochkurs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #1a120d; }
+  html, body { margin: 0; height: 100%; background: var(--bg); overflow: hidden; }
+  body { display: flex; align-items: center; justify-content: center; font-family: 'Pixelify Sans', monospace; }
+  canvas { display: block; image-rendering: pixelated; image-rendering: crisp-edges; outline: none; }
+  #touch { position: fixed; inset: auto 0 0 0; display: none; justify-content: space-between; align-items: flex-end; padding: 16px; pointer-events: none; }
+  @media (pointer: coarse) { #touch { display: flex; } }
+  .pad { position: relative; width: 150px; height: 150px; pointer-events: auto; }
+  .pad button, .ab { position: absolute; width: 50px; height: 50px; border-radius: 12px; border: 3px solid #5a3b26; background: rgba(240, 214, 160, .85); color: #5a3b26; font: 700 22px 'Pixelify Sans', monospace; touch-action: none; }
+  .pad [data-k=up] { left: 50px; top: 0; } .pad [data-k=down] { left: 50px; top: 100px; }
+  .pad [data-k=left] { left: 0; top: 50px; } .pad [data-k=right] { left: 100px; top: 50px; }
+  .ab { position: static; width: 76px; height: 76px; border-radius: 50%; pointer-events: auto; font-size: 18px; }
+</style>
+</head>
+<body>
+<canvas id="game" tabindex="0"></canvas>
+<div id="touch">
+  <div class="pad">
+    <button data-k="up">▲</button><button data-k="left">◀</button>
+    <button data-k="right">▶</button><button data-k="down">▼</button>
+  </div>
+  <button class="ab" data-k="ok">OK</button>
+</div>
+<script src="js/gfx.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/art.js"></script>
+<script src="js/sprites.js"></script>
+<script src="js/world.js"></script>
+<script src="js/minigames.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
